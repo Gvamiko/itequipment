@@ -16,7 +16,6 @@
         >
           <option value="ყველა">ყველა სტატუსი</option>
           <option value="შევსებული">შევსებული</option>
-          <option value="შევსებული">შევსებული</option>
           <option value="შესავსები">შესავსები</option>
         </select>
       </div>

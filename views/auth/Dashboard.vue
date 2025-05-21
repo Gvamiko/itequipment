@@ -7,7 +7,7 @@ import ComputerRamStats from '@/components/ComputerRamStats.vue'
 <template>
   <SidebarLayout>
     <div class="p-6 space-y-6">
-      <h1 class="text-2xl font-semibold mb-2">მთავარი</h1>
+      <h1 class="text-2xl font-semibold mb-2"></h1>
       <DashboardStats />
       <ComputerRamStats />
     </div>

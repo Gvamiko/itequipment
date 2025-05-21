@@ -35,6 +35,14 @@
         >
           თანამშრომლები
         </RouterLink>
+        <RouterLink
+            to="/library"
+            class="block px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition"
+            :class="{ 'bg-blue-100 text-blue-700': isActive('/library') }"
+            @click="closeSidebar"
+        >
+          ბიბლიოთეკა
+        </RouterLink>
       </nav>
     </aside>
 

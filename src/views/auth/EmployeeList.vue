@@ -1,81 +1,94 @@
 <template>
   <sidebar-layout>
-  <div class="p-4">
+  <div class="p-7">
     <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-      <div class="flex flex-col md:flex-row gap-2 w-full md:w-auto">
-        <input
-            v-model="searchQuery"
-            type="text"
-            placeholder="ძებნა"
-            class="w-full md:w-64 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <select
-            v-model="statusFilter"
-            class="w-full md:w-48 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="ყველა">ყველა სტატუსი</option>
-          <option value="შევსებული">შევსებული</option>
-          <option value="შესავსები">შესავსები</option>
-        </select>
-      </div>
-      <h1 class="text-2xl font-semibold text-gray-800 hidden md:block">თანამშრომლების სია</h1>
-    </div>
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+      <div class="flex flex-col sm:flex-row gap-3 w-full">
+        <!-- Search -->
+        <div class="relative w-full sm:w-72">
+          <input
+              v-model="searchQuery"
+              type="text"
+              placeholder="🔍 ძებნა თანამშრომელში"
+              class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+          />
+          <div class="absolute left-3 top-2.5 text-gray-400 pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
+            </svg>
+          </div>
+        </div>
 
+        <!-- Status Filter -->
+        <div class="w-full sm:w-48">
+          <select
+              v-model="statusFilter"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="ყველა">ყველა სტატუსი</option>
+            <option value="შევსებული">შევსებული</option>
+            <option value="შესავსები">შესავსები</option>
+          </select>
+        </div>
+      </div>
+      <h1 class="text-2xl font-semibold text-gray-400 hidden md:block">თანამშრომლები</h1>
+    </div>
     <!-- Table -->
-    <div class="overflow-x-auto bg-white shadow rounded-lg">
-      <table class="min-w-full text-sm text-gray-800">
-        <thead class="bg-gray-100 text-left">
+    <div class="overflow-x-auto bg-white shadow-md rounded-xl">
+      <table class="min-w-full divide-y divide-gray-200 text-sm text-gray-800">
+        <thead class="bg-blue-50 text-gray-700 text-sm font-semibold">
         <tr>
-          <th class="px-4 py-3">სახელი</th>
-          <th class="px-4 py-3">გვარი</th>
-          <th class="px-4 py-3">ფილიალი</th>
-          <th class="px-4 py-3">ტელეფონი</th>
-          <th class="px-4 py-3">ელ.ფოსტა</th>
-          <th class="px-4 py-3">სტატუსი</th>
-          <th class="px-4 py-3 text-center">მოქმედება</th>
+          <th class="px-6 py-3 text-left">სახელი</th>
+          <th class="px-6 py-3 text-left">გვარი</th>
+          <th class="px-6 py-3 text-left">ფილიალი</th>
+          <th class="px-6 py-3 text-left">ტელეფონი</th>
+          <th class="px-6 py-3 text-left">ელ.ფოსტა</th>
+          <th class="px-6 py-3 text-left">სტატუსი</th>
+          <th class="px-6 py-3 text-center">მოქმედება</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="divide-y divide-gray-100">
         <tr
             v-for="employee in filteredEmployees"
             :key="employee.id"
-            class="border-t hover:bg-gray-50 transition"
+            class="hover:bg-gray-50 transition duration-150 ease-in-out"
         >
-          <td class="px-4 py-2">{{ employee.firstName }}</td>
-          <td class="px-4 py-2">{{ employee.lastName }}</td>
-          <td class="px-4 py-2">{{ employee.branch }}</td>
-          <td class="px-4 py-2">{{ employee.phone }}</td>
-          <td class="px-4 py-2">{{ employee.email }}</td>
-          <td class="px-4 py-2">
-              <span
-                  :class="[
-                  'px-2 py-1 rounded-full text-xs font-medium',
-                  employee.status === 'შევსებული'
-                    ? 'bg-green-100 text-green-700'
-                    : 'bg-yellow-100 text-yellow-700'
-                ]"
-              >
-                {{ employee.status }}
-              </span>
+          <td class="px-6 py-3">{{ employee.firstName }}</td>
+          <td class="px-6 py-3">{{ employee.lastName }}</td>
+          <td class="px-6 py-3">{{ employee.branch }}</td>
+          <td class="px-6 py-3">{{ employee.phone }}</td>
+          <td class="px-6 py-3">{{ employee.email }}</td>
+          <td class="px-6 py-3">
+          <span
+              :class="[ 'px-2 py-1 rounded-full text-xs font-semibold',
+              employee.status === 'შევსებული'
+                ? 'bg-green-100 text-green-800'
+                : 'bg-yellow-100 text-yellow-800'
+            ]"
+          >
+            {{ employee.status }}
+          </span>
           </td>
-          <td class="px-4 py-2 text-center">
+          <td class="px-6 py-3 text-center">
             <RouterLink
                 :to="`/employees/${employee.id}`"
-                class="text-blue-600 hover:underline font-medium"
+                class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-medium hover:bg-blue-200 transition"
             >
               ინფორმაცია
             </RouterLink>
           </td>
         </tr>
         <tr v-if="filteredEmployees.length === 0">
-          <td colspan="7" class="text-center text-gray-500 px-4 py-6">
+          <td colspan="7" class="text-center text-gray-500 px-6 py-6">
             შედეგი ვერ მოიძებნა
           </td>
         </tr>
         </tbody>
       </table>
     </div>
+
   </div>
   </sidebar-layout>
 </template>

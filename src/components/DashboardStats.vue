@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
     <div class="bg-white rounded-lg shadow p-6 text-center">
-      <h3 class="text-gray-600">თანამშრომლების რაოდენობა</h3>
+      <h3 class="text-gray-600 gigi">თანამშრომლების რაოდენობა</h3>
       <p class="text-3xl font-bold text-blue-600">{{ totalEmployees }}</p>
     </div>
 

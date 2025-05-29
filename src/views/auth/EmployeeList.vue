@@ -9,16 +9,9 @@
           <input
               v-model="searchQuery"
               type="text"
-              placeholder="🔍 ძებნა თანამშრომელში"
-              class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+              placeholder="🔍 ძებნა"
+              class="w-full pl-10 pr-4 py-2 m rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
           />
-          <div class="absolute left-3 top-2.5 text-gray-400 pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                 viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
-            </svg>
-          </div>
         </div>
 
         <!-- Status Filter -->

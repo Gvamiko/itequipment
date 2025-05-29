@@ -1,8 +1,7 @@
-/*@font-face {*/
-/*    font-family: "firago";*/
-/*    src: url("../assets/fonts/firago-normal.woff");*/
-/*}*/
-
-/*.gigi {*/
-/*    color: red !important;*/
-/*}*/
+@font-face {
+    font-family: "firago";
+    src: url("fonts/firago-normal.woff");
+}
+body {
+    font-family: "firago";
+}
